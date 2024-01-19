@@ -1,19 +1,8 @@
 import pytest
 from selene import browser
 
-
 @pytest.fixture(scope='function', autouse=True)
-def driver():
-    pass
-
-
-@pytest.fixture(scope='function', autouse=True)
-def config():
-    pass
-
-
-@pytest.fixture(scope='function', autouse=True)
-def firefox(driver, config):
+def some_browser():
     browser.open('https://www.google.com/')
 
     yield
@@ -21,6 +10,6 @@ def firefox(driver, config):
 
 
 @pytest.fixture(scope='function', autouse=True)
-def browser_size(firefox):
+def browser_size(some_browser):
     browser.config.window_width = 400
     browser.config.window_height = 840
